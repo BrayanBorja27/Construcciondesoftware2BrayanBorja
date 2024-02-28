@@ -5,7 +5,14 @@ private long id;
 private String fullName;
 private int age;
 
-public long getId() {
+
+	public PersonDto(long id, String fullName, int age) {
+		this.id = id;
+		this.fullName = fullName;
+		this.age = age;
+	}
+
+	public long getId() {
 	return id;
 }
 public void setId(long id) {
