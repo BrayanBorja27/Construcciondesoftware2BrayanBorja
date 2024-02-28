@@ -5,7 +5,7 @@ private String name;
 private int age;
 private long idNumber;
 private String species;
-private String race;
+private String breed;
 private String characteristics;
 private double weight;
 private Person owner;
@@ -34,11 +34,11 @@ public String getSpecies() {
 public void setSpecies(String species) {
 	this.species = species;
 }
-public String getRace() {
-	return race;
+public String getBreed() {
+	return breed;
 }
-public void setRace(String race) {
-	this.race = race;
+public void setBreed(String breed) {
+	this.breed = breed;
 }
 public String getCharacteristics() {
 	return characteristics;
