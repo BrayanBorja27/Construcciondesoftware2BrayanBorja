@@ -9,7 +9,7 @@ public class PersonInputsValidator extends InputsValidator {
         return super.longValidator(number, "id de usuario");
     }
    public int ageValidator(String age) throws Exception{
-	   return super.integerValidator(age, "Ingrese edad del usuario");
+           return super.integerValidator(age, "Ingrese edad del usuario");
    }
 }
 

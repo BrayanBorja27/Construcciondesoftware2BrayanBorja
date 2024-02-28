@@ -14,7 +14,20 @@ private String vaccinationHistory;w
 private String allergies;
 private String detailsProcedures;
 
-public ClinicHistoryDto() {
+	public ClinicHistoryDto(Date registerDate, String veterinarian, String reasonForConsultation, String symptoms, String procedures, String medicines, OrderDto idOrder, String vaccinationHistory, String allergies, String detailsProcedures) {
+		this.registerDate = registerDate;
+		this.veterinarian = veterinarian;
+		this.reasonForConsultation = reasonForConsultation;
+		this.symptoms = symptoms;
+		this.procedures = procedures;
+		this.medicines = medicines;
+		this.idOrder = idOrder;
+		this.vaccinationHistory = vaccinationHistory;
+		this.allergies = allergies;
+		this.detailsProcedures = detailsProcedures;
+	}
+
+	public ClinicHistoryDto() {
 	this.registerDate=new Date(System.currentTimeMillis());
 }
 

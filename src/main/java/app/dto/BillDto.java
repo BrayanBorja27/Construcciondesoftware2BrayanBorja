@@ -11,7 +11,17 @@ private double price;
 private int amount;
 private Date date;
 
-public BillDto() {
+	public BillDto(long invoiceId, PetDto idPet, PersonDto idOwner, String productName, double price, int amount, Date date) {
+		this.invoiceId = invoiceId;
+		this.idPet = idPet;
+		this.idOwner = idOwner;
+		this.productName = productName;
+		this.price = price;
+		this.amount = amount;
+		this.date = date;
+	}
+
+	public BillDto() {
 	this.date=new Date(System.currentTimeMillis());
 }
 

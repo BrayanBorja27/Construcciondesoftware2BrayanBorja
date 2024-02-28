@@ -10,7 +10,18 @@ private String characteristics;
 private double weight;
 private PersonDto owner;
 
-public String getName() {
+	public PetDto(String name, int age, long idNumber, String species, String breed, String characteristics, double weight, PersonDto owner) {
+		this.name = name;
+		this.age = age;
+		this.idNumber = idNumber;
+		this.species = species;
+		this.breed = breed;
+		this.characteristics = characteristics;
+		this.weight = weight;
+		this.owner = owner;
+	}
+
+	public String getName() {
 	return name;
 }
 public void setName(String name) {

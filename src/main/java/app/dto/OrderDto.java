@@ -10,7 +10,16 @@ private PersonDto person;
 private String nameMedications;
 private Date generationDate;
 
-public OrderDto() {
+	public OrderDto(long orderId, PetDto idPet, PersonDto idOwner, PersonDto person, String nameMedications, Date generationDate) {
+		this.orderId = orderId;
+		this.idPet = idPet;
+		this.idOwner = idOwner;
+		this.person = person;
+		this.nameMedications = nameMedications;
+		this.generationDate = generationDate;
+	}
+
+	public OrderDto() {
 	this.generationDate=new Date(System.currentTimeMillis());
 }
 

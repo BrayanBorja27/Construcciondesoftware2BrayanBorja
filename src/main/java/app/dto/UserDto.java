@@ -6,7 +6,14 @@ private String password;
 private String role;
 private PersonDto person;
 
-public String getUser() {
+	public UserDto(String user, String password, String role, PersonDto person) {
+		this.user = user;
+		this.password = password;
+		this.role = role;
+		this.person = person;
+	}
+
+	public String getUser() {
 	return user;
 }
 public void setUser(String user) {
