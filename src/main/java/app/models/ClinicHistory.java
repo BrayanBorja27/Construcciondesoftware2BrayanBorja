@@ -10,7 +10,7 @@ private String symptoms;
 private String procedures;
 private String medicines;
 private Order idOrder;
-private String vaccionationHistory;
+private String vaccinationHistory;
 private String allergies;
 private String detailsProcedures;
 
@@ -60,11 +60,11 @@ public Order getIdorder() {
 public void setIdorder(Order idorder) {
 	this.idOrder = idorder;
 }
-public String getVaccionationHistory() {
-	return vaccionationHistory;
+public String getVaccinationHistory() {
+	return vaccinationHistory;
 }
-public void setVaccionationHistory(String vaccionationHistory) {
-	this.vaccionationHistory = vaccionationHistory;
+public void setVaccinationHistory(String vaccinationHistory) {
+	this.vaccinationHistory = vaccinationHistory;
 }
 public String getAllergies() {
 	return allergies;
