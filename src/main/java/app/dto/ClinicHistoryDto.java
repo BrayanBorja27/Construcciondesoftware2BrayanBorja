@@ -1,20 +1,20 @@
-package app.models;
+package app.dto;
 
 import java.sql.Date;
 
-public class ClinicHistory {
+public class ClinicHistoryDto {
 private Date registerDate;
 private String veterinarian;
 private String reasonForConsultation;
 private String symptoms;
 private String procedures;
 private String medicines;
-private Order idOrder;
+private OrderDto idOrder;
 private String vaccinationHistory;w
 private String allergies;
 private String detailsProcedures;
 
-public ClinicHistory() {
+public ClinicHistoryDto() {
 	this.registerDate=new Date(System.currentTimeMillis());
 }
 
@@ -54,10 +54,10 @@ public String getMedicines() {
 public void setMedicines(String medicines) {
 	this.medicines = medicines;
 }
-public Order getIdorder() {
+public OrderDto getIdorder() {
 	return idOrder;
 }
-public void setIdorder(Order idorder) {
+public void setIdorder(OrderDto idorder) {
 	this.idOrder = idorder;
 }
 public String getVaccinationHistory() {
