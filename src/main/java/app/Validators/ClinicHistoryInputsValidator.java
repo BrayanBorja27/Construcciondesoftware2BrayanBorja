@@ -11,6 +11,10 @@ public class ClinicHistoryInputsValidator extends InputsValidator {
     public void symptomsValidator(String symptoms) throws Exception {
         super.stringValidator(symptoms, "Sintomas");
     }
+
+    public void diagnosticValidator(String diagnostic) throws Exception {
+        super.stringValidator(diagnostic, "Diagnostico");
+    }
     public void proceduresValidator(String procedures) throws Exception {
         super.stringValidator(procedures, " procedimiento");
     }

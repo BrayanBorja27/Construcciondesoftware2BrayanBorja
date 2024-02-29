@@ -12,18 +12,18 @@ public class PetInputsValidator extends InputsValidator{
         return super.longValidator(idNumber, " identificacion de mascota");
     }
 	public void speciesValidator(String species) throws Exception {
-        super.stringValidator(species, " Nombre de mascota incorrecto");
+        super.stringValidator(species, " Especie no valida");
     }
-	public void raceValidator(String race) throws Exception {
-        super.stringValidator(race, " Nombre de mascota incorrecto");
+	public void breedValidator(String breed) throws Exception {
+        super.stringValidator(breed, " raza no valida");
     }
 	public void characteristicsValidator(String characteristics) throws Exception {
-        super.stringValidator(characteristics, " Nombre de mascota incorrecto");
+        super.stringValidator(characteristics, " caracteristicas no validas");
     }
 	public double weightValidator(String weight) throws Exception {
-        return super.doubleValidator(weight, " id de mascota");
+        return super.doubleValidator(weight, " peso no valido");
     }
 	public long ownerValidator(String owner) throws Exception {
-        return super.longValidator(owner, " identificación de mascota");
+        return super.longValidator(owner, " dueño no valido");
     }
 }

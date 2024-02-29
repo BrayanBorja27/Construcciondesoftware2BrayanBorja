@@ -1,5 +1,9 @@
 package app.Validators;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public abstract class InputsValidator {
     public void stringValidator(String string, String element) throws Exception {
         if (string == null || string.equals("")) {
@@ -17,7 +21,7 @@ public abstract class InputsValidator {
     }
     
     public long longValidator(String number, String element) throws Exception {
-        longValidator(number, element);
+
         try {
             return Long.parseLong(number);
         } catch (Exception e) {
@@ -33,4 +37,15 @@ public abstract class InputsValidator {
             throw new Exception(element + " no es un numero valido");
         }
     }
+
+    public Date dateValidator(String dateStr, String element) throws Exception {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            sdf.setLenient(false);
+            return sdf.parse(dateStr);
+        } catch (ParseException e) {
+            throw new Exception(element + " no es una fecha válida en el formato yyyy-MM-dd");
+        }
+    }
+
 }

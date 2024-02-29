@@ -5,11 +5,18 @@ private long id;
 private String fullName;
 private int age;
 
+	private String userName;
+	private String password;
+	private String role;
 
-	public PersonDto(long id, String fullName, int age) {
+
+	public PersonDto(long id, String fullName, int age, String userName, String password, String role) {
 		this.id = id;
 		this.fullName = fullName;
 		this.age = age;
+		this.userName = userName;
+		this.password = password;
+		this.role = role;
 	}
 
 	public long getId() {
@@ -30,4 +37,28 @@ public int getAge() {
 public void setAge(int age) {
 	this.age = age;
 }
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 }

@@ -10,7 +10,7 @@ private String symptoms;
 private String procedures;
 private String medicines;
 private Order idOrder;
-private String vaccinationHistory;w
+private String vaccinationHistory;
 private String allergies;
 private String detailsProcedures;
 

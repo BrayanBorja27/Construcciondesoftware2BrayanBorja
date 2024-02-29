@@ -8,9 +8,9 @@ private String species;
 private String breed;
 private String characteristics;
 private double weight;
-private PersonDto owner;
+private String ownerId;
 
-	public PetDto(String name, int age, long idNumber, String species, String breed, String characteristics, double weight, PersonDto owner) {
+	public PetDto(String name, int age, long idNumber, String species, String breed, String characteristics, double weight, String ownerId) {
 		this.name = name;
 		this.age = age;
 		this.idNumber = idNumber;
@@ -18,7 +18,7 @@ private PersonDto owner;
 		this.breed = breed;
 		this.characteristics = characteristics;
 		this.weight = weight;
-		this.owner = owner;
+		this.ownerId = ownerId;
 	}
 
 	public String getName() {
@@ -63,11 +63,12 @@ public double getWeight() {
 public void setWeight(double weight) {
 	this.weight = weight;
 }
-public PersonDto getOwner() {
-	return owner;
-}
-public void setOwner(PersonDto owner) {
-	this.owner = owner;
-}
 
+	public String getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
+	}
 }

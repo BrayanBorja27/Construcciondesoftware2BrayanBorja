@@ -8,7 +8,7 @@ private String species;
 private String breed;
 private String characteristics;
 private double weight;
-private Person owner;
+private Person petOwner;
 
 public String getName() {
 	return name;
@@ -52,11 +52,11 @@ public double getWeight() {
 public void setWeight(double weight) {
 	this.weight = weight;
 }
-public Person getOwner() {
-	return owner;
+public Person getPetOwner() {
+	return petOwner;
 }
-public void setOwner(Person owner) {
-	this.owner = owner;
+public void setPetOwner(Person petOwner) {
+	this.petOwner = petOwner;
 }
 
 }

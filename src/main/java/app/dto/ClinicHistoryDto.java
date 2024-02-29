@@ -7,24 +7,27 @@ private Date registerDate;
 private String veterinarian;
 private String reasonForConsultation;
 private String symptoms;
+private String diagnostico;
 private String procedures;
 private String medicines;
 private OrderDto idOrder;
-private String vaccinationHistory;w
+private String vaccinationHistory;
 private String allergies;
 private String detailsProcedures;
 
-	public ClinicHistoryDto(Date registerDate, String veterinarian, String reasonForConsultation, String symptoms, String procedures, String medicines, OrderDto idOrder, String vaccinationHistory, String allergies, String detailsProcedures) {
-		this.registerDate = registerDate;
+	public ClinicHistoryDto( String veterinarian, String reasonForConsultation, String symptoms,String diagnostico, String procedures, String medicines, OrderDto idOrder, String vaccinationHistory, String allergies, String detailsProcedures) {
+
 		this.veterinarian = veterinarian;
 		this.reasonForConsultation = reasonForConsultation;
 		this.symptoms = symptoms;
+		this.diagnostico= diagnostico;
 		this.procedures = procedures;
 		this.medicines = medicines;
 		this.idOrder = idOrder;
 		this.vaccinationHistory = vaccinationHistory;
 		this.allergies = allergies;
 		this.detailsProcedures = detailsProcedures;
+		this.registerDate= new Date(System.currentTimeMillis());
 	}
 
 	public ClinicHistoryDto() {
@@ -55,7 +58,16 @@ public String getSymptoms() {
 public void setSymptoms(String symptoms) {
 	this.symptoms = symptoms;
 }
-public String getProcedures() {
+
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+
+	public String getProcedures() {
 	return procedures;
 }
 public void setProcedures(String procedures) {

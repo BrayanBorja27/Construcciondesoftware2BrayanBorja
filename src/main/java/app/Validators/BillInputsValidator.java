@@ -1,5 +1,8 @@
 package app.Validators;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class BillInputsValidator extends InputsValidator {
 	
 	public long invoiceIdValidator(String invoiceId) throws Exception {
@@ -16,6 +19,16 @@ public class BillInputsValidator extends InputsValidator {
     }
 	public double priceValidator(String price) throws Exception {
         return super.doubleValidator(price, " id de mascota");
+    }
+
+    public int amountValidator(String amount) throws Exception {
+        return super.integerValidator(amount, " cantidad de productos");
+    }
+
+    public Date dateValidator(Date date) throws Exception{
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateStr = sdf.format(date);
+        return date;
     }
 	
 }
