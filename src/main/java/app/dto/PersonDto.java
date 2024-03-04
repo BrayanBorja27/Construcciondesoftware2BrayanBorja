@@ -3,7 +3,7 @@ package app.dto;
 public class PersonDto {
 private long id;
 private String fullName;
-private int age;
+private int age;                                                                                                                                                                   
 
 	private String userName;
 	private String password;
