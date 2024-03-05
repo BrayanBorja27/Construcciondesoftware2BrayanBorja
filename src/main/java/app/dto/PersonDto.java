@@ -1,5 +1,7 @@
 package app.dto;
 
+import app.models.Person;
+
 public class PersonDto {
 private long id;
 private String fullName;
@@ -17,6 +19,20 @@ private int age;
 		this.userName = userName;
 		this.password = password;
 		this.role = role;
+	}
+
+	public PersonDto(String userName, String password) {
+		this.userName = userName;
+		this.password = password;
+	}
+	public PersonDto(Person person) {
+		this.id = person.getId();
+		this.fullName = person.getFullName();
+		this.role = person.getRole();
+		this.userName = person.getUserName();
+		this.password = person.getPassword();
+	}
+	public PersonDto() {
 	}
 
 	public long getId() {

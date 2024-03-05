@@ -4,6 +4,12 @@
   <artifactId>construccion</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>app</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>20</maven.compiler.source>
+    <maven.compiler.target>20</maven.compiler.target>
+    <exec.mainClass>app.App</exec.mainClass>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>mysql</groupId>
