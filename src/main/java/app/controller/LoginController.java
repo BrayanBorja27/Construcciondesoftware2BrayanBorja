@@ -9,7 +9,9 @@ import app.service.VetShopService;
 public class LoginController {
     private static Scanner reader = new Scanner(System.in);
     private static PersonInputsValidator personInputValidator = new PersonInputsValidator();
-    private static LoginService loginService = new AdminController();
+    private static LoginService loginService = new VetShopService() ;
+
+
     private static AdminController adminController = new AdminController();
 
 

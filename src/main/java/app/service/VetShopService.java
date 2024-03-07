@@ -12,7 +12,7 @@ import app.dto.SessionDto;
 import java.util.Arrays;
 import java.util.List;
 
-public class VetShopService implements AdminService {
+public class VetShopService implements AdminService , LoginService {
 
     private static final String [] rolls = {"Vendedor , Administrador , Veterinario"};
     private static long sessionId = 0L;

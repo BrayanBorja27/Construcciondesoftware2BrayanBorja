@@ -26,7 +26,7 @@ public class AdminController {
 
     private static final String MENUADMIN = "1. Crear usuario \n2. Cerrar sesion";
     private static final String MENUVET = "1. Crear dueño \n2. Crear Historia Clinica \n3. Para crear Mascota \n4. Consultar Historia Clinica \n5. Editar Historia Clinica \n6. Listado Ordenes \n7. Anular Orden \n8. Cerrar sesion";
-    private static final String MENUSELLER = "1. Para crear Factura \n2. Para cerrar sesion"
+    private static final String MENUSELLER = "1. Para crear Factura \n2. Para cerrar sesion";
     //SESION ADMIN
     public void sessionAdmin() {
         boolean runApp = true;
@@ -108,11 +108,11 @@ public class AdminController {
             }
             case "2":{
                 createClinicHistory();
-                return true
+                return true;
             }
             case "3":{
                 createPet();
-                return true
+                return true;
             }
             case "8": {
                 return false;
@@ -172,7 +172,7 @@ public class AdminController {
 
 
 
-        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto( veterinarian,  reasonForConsultation, symptoms, diagnostic, procedures, medicines, idOrder, vaccinationHistory,allergies, detailsProcedures);
+        //ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto( veterinarian,  reasonForConsultation, symptoms, diagnostic, procedures, medicines, idOrder, vaccinationHistory,allergies, detailsProcedures);
 
     }
 
@@ -196,7 +196,7 @@ public class AdminController {
         System.out.println("Ingresa el peso de la mascota");
         double weight  = petInputsValidator.weightValidator(reader.nextLine());
 
-        PetDto petDto = new PetDto(name,age, idNumber, species, breed, characteristics, weight, idOwner)
+        //PetDto petDto = new PetDto(name,age, idNumber, species, breed, characteristics, weight, idOwner);
     }
 
     public void sessionSeller() {
@@ -240,7 +240,7 @@ public class AdminController {
         int amount  = billInputsValidator.amountValidator(reader.nextLine());
         System.out.println("Ingresa la fecha");
 
-        BillDto billDto = new Bill(invoiceId, idPet, idOwner, productName, price, amount, date);
+        //BillDto billDto = new Bill(invoiceId, idPet, idOwner, productName, price, amount, date);
 
     }
 }

@@ -1,6 +1,9 @@
 package app;
 
+import app.config.MYSQLConnection;
 import app.controller.AdminController;
+
+import java.sql.Connection;
 
 public class App {
     public static void main(String[] args) {
@@ -16,7 +19,7 @@ public class App {
         }
         //}
         System.out.print("deteniendo la aplicacion");
-
+//
         while (true) {
             try {
                 adminController.createUser();
@@ -26,5 +29,6 @@ public class App {
             }
 
         }
+        //
     }
 }
