@@ -14,6 +14,7 @@ private OrderDto idOrder;
 private String vaccinationHistory;
 private String allergies;
 private String detailsProcedures;
+private String estado;
 
 	public ClinicHistoryDto( String veterinarian, String reasonForConsultation, String symptoms,String diagnostico, String procedures, String medicines, OrderDto idOrder, String vaccinationHistory, String allergies, String detailsProcedures) {
 
@@ -28,6 +29,11 @@ private String detailsProcedures;
 		this.allergies = allergies;
 		this.detailsProcedures = detailsProcedures;
 		this.registerDate= new Date(System.currentTimeMillis());
+		this.estado = "activa";
+	}
+
+	public void anularOrden() {
+		this.estado = "anulada";
 	}
 
 	public ClinicHistoryDto() {
@@ -37,6 +43,8 @@ private String detailsProcedures;
 public Date getRegisterDate() {
 	return registerDate;
 }
+
+
 public void setRegisterDate(Date registerDate) {
 	this.registerDate = registerDate;
 }

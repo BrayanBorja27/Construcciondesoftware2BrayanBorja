@@ -1,14 +1,13 @@
 package app.service;
 
-import app.dao.LoginDao;
-import app.dao.LoginDaoImpl;
-import app.dao.PersonDao;
-import app.dao.PersonDaoImpl;
+import app.dao.*;
 import app.dto.ClinicHistoryDto;
 import app.dto.PersonDto;
 import app.dto.PetDto;
 import app.dto.SessionDto;
+import app.models.ClinicHistory;
 
+import java.sql.Connection;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,6 +15,10 @@ public class VetShopService implements AdminService , LoginService {
 
     private static final String [] rolls = {"Vendedor , Administrador , Veterinario"};
     private static long sessionId = 0L;
+
+
+
+
     @Override
     public void createUser(PersonDto personDto) throws Exception {
         List<String> rols = Arrays.asList(rolls);
@@ -67,13 +70,19 @@ public class VetShopService implements AdminService , LoginService {
 
     }
 
+    private ClinicHistoryDao clinicHistoryDao;
+
+    public VetShopService(Connection connection) {
+        this.clinicHistoryDao = new ClinicHistoryDaoImpl(connection);
+    }
+
+    // ...
+
     @Override
     public void createClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
-
-    }
-
-    @Override
-    public void createOwnerUser(PersonDto personDto) throws Exception {
-        createUser(personDto);
-    }
+        ClinicHistory clinicHistory = new ClinicHistory(clinicHistoryDto.getVeterinarian(), clinicHistoryDto.getReasonForConsultation(), clinicHistoryDto.getSymptoms(), clinicHistoryDto.getDiagnostic(), clinicHistoryDto.getProcedures(), clinicHistoryDto.getMedicines(), clinicHistoryDto.getIdOrder(), clinicHistoryDto.getVaccinationHistory(), clinicHistoryDto.getAllergies(), clinicHistoryDto.getDetailsProcedures());
+        clinicHistoryDao.createClinicHistory(clinicHistoryDto);
 }
+}
+
+

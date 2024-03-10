@@ -19,7 +19,28 @@ public class AdminController {
 
     PetInputsValidator petInputsValidator = new PetInputsValidator();
 
-    private static AdminService adminService = new VetShopService();
+    private static AdminService adminService = new AdminService() {
+        @Override
+        public void createUser(PersonDto personDto) throws Exception {
+
+        }
+
+        @Override
+        public void createPet(PetDto petDto) throws Exception {
+
+        }
+
+        @Override
+        public void createClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
+
+        }
+
+        @Override
+        public void createOwnerUser(PersonDto personDto) throws Exception {
+
+        }
+    }
+
 
 
     private static Scanner reader = new Scanner(System.in);
@@ -172,7 +193,8 @@ public class AdminController {
 
 
 
-        //ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto( veterinarian,  reasonForConsultation, symptoms, diagnostic, procedures, medicines, idOrder, vaccinationHistory,allergies, detailsProcedures);
+        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto( veterinarian,  reasonForConsultation, symptoms, diagnostic, procedures, medicines, idOrder, vaccinationHistory,allergies, detailsProcedures);
+
 
     }
 
@@ -196,7 +218,7 @@ public class AdminController {
         System.out.println("Ingresa el peso de la mascota");
         double weight  = petInputsValidator.weightValidator(reader.nextLine());
 
-        //PetDto petDto = new PetDto(name,age, idNumber, species, breed, characteristics, weight, idOwner);
+        PetDto petDto = new PetDto(name,age, idNumber, species, breed, characteristics, weight, idOwner);
     }
 
     public void sessionSeller() {
@@ -240,7 +262,7 @@ public class AdminController {
         int amount  = billInputsValidator.amountValidator(reader.nextLine());
         System.out.println("Ingresa la fecha");
 
-        //BillDto billDto = new Bill(invoiceId, idPet, idOwner, productName, price, amount, date);
+        BillDto billDto = new Bill(invoiceId, idPet, idOwner, productName, price, amount, date);
 
     }
 }
