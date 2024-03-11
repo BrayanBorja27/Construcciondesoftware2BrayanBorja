@@ -2,6 +2,9 @@ package app.dao;
 
 import app.config.MYSQLConnection;
 import app.dto.ClinicHistoryDto;
+import app.dto.OrderDto;
+import app.models.ClinicHistory;
+import app.service.VetShopService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -50,11 +53,40 @@ public class ClinicHistoryDaoImpl implements ClinicHistoryDao {
         }
     }
 
+    public ClinicHistory getClinicHistory(long petId) throws Exception {
+        // Consulta la historia clínica de la mascota en la base de datos utilizando el ID de la mascota
+        String sql = "SELECT * FROM clinic_history WHERE pet_id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setLong(1, petId);
+        ResultSet resultSet = statement.executeQuery();
+
+        // Crea una nueva instancia de ClinicHistory utilizando los datos de la historia clínica de la mascota
+        if (resultSet.next()) {
+            ClinicHistory clinicHistory = new ClinicHistory(
+                    resultSet.getString("veterinarian"),
+                    resultSet.getString("reason_for_consultation"),
+                    resultSet.getString("symptoms"),
+                    resultSet.getString("diagnostico"),
+                    resultSet.getString("procedures"),
+                    resultSet.getString("medicines"),
+                    new OrderDto(resultSet.getLong("order_id")),
+                    resultSet.getString("vaccination_history"),
+                    resultSet.getString("allergies"),
+                    resultSet.getString("details_procedures")
+            );
+            return clinicHistory;
+        } else {
+            return null;
+        }
+    }
+
 
     @Override
     public List<ClinicHistoryDto> getClinicHistories() throws Exception {
         return null;
     }
+
+    VetShopService service = new VetShopService(connection);
 
     @Override
     public void updateClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
@@ -66,5 +98,4 @@ public class ClinicHistoryDaoImpl implements ClinicHistoryDao {
 
     }
 
-    // Implementa los demás métodos de la interfaz ClinicHistoryDao
 }

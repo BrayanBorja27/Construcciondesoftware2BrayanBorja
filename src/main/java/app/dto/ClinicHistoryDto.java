@@ -32,6 +32,8 @@ private String estado;
 		this.estado = "activa";
 	}
 
+
+
 	public void anularOrden() {
 		this.estado = "anulada";
 	}
@@ -90,8 +92,8 @@ public void setMedicines(String medicines) {
 public OrderDto getIdorder() {
 	return idOrder;
 }
-public void setIdorder(OrderDto idorder) {
-	this.idOrder = idorder;
+public void setIdorder() {
+	this.idOrder = idOrder;
 }
 public String getVaccinationHistory() {
 	return vaccinationHistory;

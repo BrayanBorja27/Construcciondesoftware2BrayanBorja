@@ -9,9 +9,22 @@ import app.service.VetShopService;
 public class LoginController {
     private static Scanner reader = new Scanner(System.in);
     private static PersonInputsValidator personInputValidator = new PersonInputsValidator();
-    private static LoginService loginService = new VetShopService() ;
+    private static LoginService loginService = new LoginService() {
+        @Override
+        public void setSesionID(long sesionId) {
 
+        }
 
+        @Override
+        public void login(PersonDto personDto) throws Exception {
+
+        }
+
+        @Override
+        public void logout() throws Exception {
+
+        }
+    };
     private static AdminController adminController = new AdminController();
 
 

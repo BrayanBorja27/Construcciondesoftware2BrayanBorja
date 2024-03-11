@@ -1,14 +1,14 @@
 package app.controller;
 
 import app.Validators.*;
-import app.dto.BillDto;
-import app.dto.ClinicHistoryDto;
-import app.dto.PersonDto;
-import app.dto.PetDto;
+import app.dto.*;
 import app.models.Bill;
 import app.service.AdminService;
 import app.service.VetShopService;
+import app.dao.ClinicHistoryDao;
 
+
+import java.util.List;
 import java.util.Scanner;
 
 public class AdminController {
@@ -18,6 +18,28 @@ public class AdminController {
     OrderInputsValidator orderInputsValidator = new OrderInputsValidator();
 
     PetInputsValidator petInputsValidator = new PetInputsValidator();
+
+    ClinicHistoryDao clinicHistoryDao = new ClinicHistoryDao() {
+        @Override
+        public void createClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
+
+        }
+
+        @Override
+        public List<ClinicHistoryDto> getClinicHistories() throws Exception {
+            return null;
+        }
+
+        @Override
+        public void updateClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
+
+        }
+
+        @Override
+        public void deleteClinicHistory(int id) throws Exception {
+
+        }
+    }
 
     private static AdminService adminService = new AdminService() {
         @Override
@@ -191,9 +213,12 @@ public class AdminController {
         clinicHistoryInputsValidator.medicinesValidator(detailsProcedures);
 
 
+        OrderDto orderDto = new OrderDto();
 
+        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto(veterinarian, reasonForConsultation, symptoms, diagnostic, procedures, medicines, orderDto, vaccinationHistory, allergies, detailsProcedures);
+        clinicHistoryDao.createClinicHistory(clinicHistoryDto);
+        System.out.println("Historia clínica creada exitosamente");
 
-        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto( veterinarian,  reasonForConsultation, symptoms, diagnostic, procedures, medicines, idOrder, vaccinationHistory,allergies, detailsProcedures);
 
 
     }
