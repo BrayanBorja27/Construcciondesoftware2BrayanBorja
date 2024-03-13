@@ -215,7 +215,7 @@ public class AdminController {
 
         OrderDto orderDto = new OrderDto();
 
-        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto(veterinarian, reasonForConsultation, symptoms, diagnostic, procedures, medicines, orderDto, vaccinationHistory, allergies, detailsProcedures);
+        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto(veterinarian, reasonForConsultation, symptoms, diagnostic, procedures, medicines, orderDto.getOrderId(), vaccinationHistory, allergies, detailsProcedures);
         clinicHistoryDao.createClinicHistory(clinicHistoryDto);
         System.out.println("Historia clínica creada exitosamente");
 
@@ -242,6 +242,8 @@ public class AdminController {
         petInputsValidator.characteristicsValidator(characteristics);
         System.out.println("Ingresa el peso de la mascota");
         double weight  = petInputsValidator.weightValidator(reader.nextLine());
+
+
 
         PetDto petDto = new PetDto(name,age, idNumber, species, breed, characteristics, weight, idOwner);
     }
@@ -287,7 +289,12 @@ public class AdminController {
         int amount  = billInputsValidator.amountValidator(reader.nextLine());
         System.out.println("Ingresa la fecha");
 
-        BillDto billDto = new Bill(invoiceId, idPet, idOwner, productName, price, amount, date);
+        PetDto petDto = new PetDto();
+        PersonDto personDto = new PersonDto();
+        BillDto billDate = new BillDto();
+
+
+        BillDto billDto = new Bill(invoiceId, petDto.getIdNumber(), personDto.getId(), productName, price, amount, billDate.getDate());
 
     }
 }

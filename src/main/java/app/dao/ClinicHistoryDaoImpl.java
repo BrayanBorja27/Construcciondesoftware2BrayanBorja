@@ -3,6 +3,7 @@ package app.dao;
 import app.config.MYSQLConnection;
 import app.dto.ClinicHistoryDto;
 import app.dto.OrderDto;
+import app.dto.PetDto;
 import app.models.ClinicHistory;
 import app.service.VetShopService;
 
@@ -42,7 +43,9 @@ public class ClinicHistoryDaoImpl implements ClinicHistoryDao {
             try (ResultSet resultSet = selectStatement.executeQuery()) {
                 if (resultSet.next()) {
                     int idOrder = resultSet.getInt(1);
-                    clinicHistoryDto.setIdorder();
+                    OrderDto order = new OrderDto();
+                    order.setOrderId(idOrder);
+                    clinicHistoryDto.setIdorder(order);
                 } else {
                     throw new Exception("No se pudo obtener el valor generado automáticamente para idOrder.");
                 }

@@ -9,6 +9,8 @@ private String reasonForConsultation;
 private String symptoms;
 private String procedures;
 private String medicines;
+
+	private String diagnostico;
 private Order idOrder;
 private String vaccinationHistory;
 private String allergies;
@@ -79,5 +81,19 @@ public void setDetailsProcedures(String detailsProcedures) {
 	this.detailsProcedures = detailsProcedures;
 }
 
+	public String getDiagnostico() {
+		return diagnostico;
+	}
 
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+
+	public Order getIdOrder() {
+		return idOrder;
+	}
+
+	public void setIdOrder(Order idOrder) {
+		this.idOrder = idOrder;
+	}
 }

@@ -85,8 +85,8 @@ public class VetShopService implements AdminService , LoginService {
 
     @Override
     public void createClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
-        ClinicHistory clinicHistory = new ClinicHistory(clinicHistoryDto.getVeterinarian(), clinicHistoryDto.getReasonForConsultation(), clinicHistoryDto.getSymptoms(), clinicHistoryDto.getDiagnostico(), clinicHistoryDto.getProcedures(), clinicHistoryDto.getMedicines(), clinicHistoryDto.getIdorder().getOrderId() , clinicHistoryDto.getVaccinationHistory(), clinicHistoryDto.getAllergies(), clinicHistoryDto.getDetailsProcedures());
-        this.clinicHistoryDao.createClinicHistory(clinicHistory);
+        ClinicHistoryDto clinicHistory = new ClinicHistoryDto(clinicHistoryDto.getVeterinarian(), clinicHistoryDto.getReasonForConsultation(), clinicHistoryDto.getSymptoms(), clinicHistoryDto.getDiagnostico(), clinicHistoryDto.getProcedures(), clinicHistoryDto.getMedicines(), clinicHistoryDto.getIdorder() , clinicHistoryDto.getVaccinationHistory(), clinicHistoryDto.getAllergies(), clinicHistoryDto.getDetailsProcedures());
+        this.clinicHistoryDao.createClinicHistory(clinicHistoryDto);
     }
 
     @Override

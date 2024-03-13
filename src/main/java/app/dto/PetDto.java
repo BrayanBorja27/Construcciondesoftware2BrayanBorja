@@ -21,6 +21,9 @@ private String ownerId;
 		this.ownerId = ownerId;
 	}
 
+	public PetDto() {
+	}
+
 	public String getName() {
 	return name;
 }
