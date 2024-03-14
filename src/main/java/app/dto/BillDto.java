@@ -11,8 +11,8 @@ private double price;
 private int amount;
 private Date date;
 
-	public BillDto(long invoiceId, PetDto idPet, PersonDto idOwner, String productName, double price, int amount, Date date) {
-		this.invoiceId = invoiceId;
+	public BillDto(PetDto idPet, PersonDto idOwner, String productName, double price, int amount, Date date) {
+
 		this.idPet = idPet;
 		this.idOwner = idOwner;
 		this.productName = productName;

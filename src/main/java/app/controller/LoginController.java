@@ -36,15 +36,18 @@ public class LoginController {
         System.out.println("Ingrese su contraseña");
         String password = reader.nextLine();
         personInputValidator.passwordValidator(password);
-        PersonDto personDto = new PersonDto(userName, password);
+        System.out.println("Ingrese su Rol");
+        String rol = reader.nextLine();
+        personInputValidator.rollValidator(rol);
+        PersonDto personDto = new PersonDto(userName, password,rol);
         loginService.login(personDto);
         loginRouter(personDto);
         loginService.logout();
     }
     private void loginRouter(PersonDto personDto) {
-        if (personDto.getRole().equals("Admin")) {
+        if (personDto.getRole().equals("Administrador")) {
             adminController.sessionAdmin();
-        } else if (personDto.getRole().equals("Vet")){
+        } else if (personDto.getRole().equals("Veterinario")){
             adminController.sessionVet();
         }
     }

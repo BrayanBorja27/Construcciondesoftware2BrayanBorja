@@ -7,6 +7,7 @@ import app.dto.PetDto;
 import app.models.ClinicHistory;
 import app.service.VetShopService;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,13 +17,13 @@ import java.util.List;
 public class ClinicHistoryDaoImpl implements ClinicHistoryDao {
     public Connection connection = MYSQLConnection.getConnection();
 
-    public ClinicHistoryDaoImpl(Connection connection) {
-        this.connection = connection;
+    public ClinicHistoryDaoImpl() {
+
     }
 
     @Override
     public void createClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
-        String Sql = "INSERT INTO clinic_history (veterinarian, reason_for_consultation, symptoms, diagnostic, procedures, medicines, id_order, vaccination_history, allergies, details_procedures) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String Sql = "INSERT INTO historia (veterinarian, reason_for_consultation, symptoms, diagnostic, procedures, medicines, id_order, vaccination_history, allergies, details_procedures) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         String selectSql = "SELECT LAST_INSERT_ID()";
         try (
              PreparedStatement insertStatement = connection.prepareStatement(Sql);
@@ -56,9 +57,11 @@ public class ClinicHistoryDaoImpl implements ClinicHistoryDao {
         }
     }
 
-    public ClinicHistory getClinicHistory(long petId) throws Exception {
+
+
+    public ClinicHistory searchClinicHistory(long petId) throws Exception {
         // Consulta la historia clínica de la mascota en la base de datos utilizando el ID de la mascota
-        String sql = "SELECT * FROM clinic_history WHERE pet_id = ?";
+        String sql = "SELECT id FROM historia WHERE mascota = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setLong(1, petId);
         ResultSet resultSet = statement.executeQuery();
@@ -84,21 +87,46 @@ public class ClinicHistoryDaoImpl implements ClinicHistoryDao {
     }
 
 
-    @Override
-    public List<ClinicHistoryDto> getClinicHistories() throws Exception {
-        return null;
-    }
 
     VetShopService service = new VetShopService(connection);
 
     @Override
     public void updateClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
+        String query = "UPDATE clinic_history SET ordercancelation = ? WHERE ORDEN = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, clinicHistoryDto.getEstado());
+            statement.setLong(2, clinicHistoryDto.getIdorder().getOrderId());
 
     }
 
     @Override
-    public void deleteClinicHistory(int id) throws Exception {
+    public void searchClinicHistory(Long petId) throws Exception {
+        // Consulta la historia clínica de la mascota en la base de datos utilizando el ID de la mascota
+        String sql = "SELECT * FROM historia WHERE mascota = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setLong(1, petId);
+        ResultSet resultSet = statement.executeQuery();
+
+        // Crea una nueva instancia de ClinicHistory utilizando los datos de la historia clínica de la mascota
+        if (resultSet.next()) {
+            ClinicHistory clinicHistory = new ClinicHistory(
+                    resultSet.getString("veterinarian"),
+                    resultSet.getString("reason_for_consultation"),
+                    resultSet.getString("symptoms"),
+                    resultSet.getString("diagnostico"),
+                    resultSet.getString("procedures"),
+                    resultSet.getString("medicines"),
+                    new OrderDto(resultSet.getLong("order_id")),
+                    resultSet.getString("vaccination_history"),
+                    resultSet.getString("allergies"),
+                    resultSet.getString("details_procedures")
+            );
+            }else {
+            System.out.println("Id no valida");
+        }
+
 
     }
+
 
 }

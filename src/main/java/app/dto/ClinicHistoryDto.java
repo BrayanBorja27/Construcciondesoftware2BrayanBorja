@@ -32,9 +32,9 @@ private String estado;
 		this.estado = "activa";
 	}
 
-
-
-
+	public String getEstado(){
+		return this.estado;
+	}
 
 	public void anularOrden() {
 		this.estado = "anulada";

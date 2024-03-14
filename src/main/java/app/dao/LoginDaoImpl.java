@@ -13,7 +13,7 @@ public class LoginDaoImpl implements LoginDao {
 
     @Override
     public SessionDto login(PersonDto personDto) throws Exception {
-        String query = "INSERT INTO SESION(USERNAME,ROLE) VALUES (?,?)";
+        String query = "INSERT INTO SESION(username,role) VALUES (?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         int i = 1;
         preparedStatement.setString(i++, personDto.getUserName());
@@ -38,7 +38,7 @@ public class LoginDaoImpl implements LoginDao {
 
     @Override
     public void logout(long sessionId) throws Exception {
-        String query = "DELETE FROM SESION WHERE ID = ?";
+        String query = "DELETE FROM SESION WHERE id = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setLong(1, sessionId);
         preparedStatement.execute();

@@ -19,6 +19,10 @@ private Date generationDate;
 		this.generationDate = generationDate;
 	}
 
+	public OrderDto(long orderId) {
+		this.orderId = orderId;
+	}
+
 	public OrderDto() {
 	this.generationDate=new Date(System.currentTimeMillis());
 }

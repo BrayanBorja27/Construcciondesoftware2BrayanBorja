@@ -25,10 +25,6 @@ public class AdminController {
 
         }
 
-        @Override
-        public List<ClinicHistoryDto> getClinicHistories() throws Exception {
-            return null;
-        }
 
         @Override
         public void updateClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
@@ -36,10 +32,12 @@ public class AdminController {
         }
 
         @Override
-        public void deleteClinicHistory(int id) throws Exception {
+        public void searchClinicHistory(Long petId) throws Exception {
 
         }
-    }
+
+
+    };
 
     private static AdminService adminService = new AdminService() {
         @Override
@@ -47,21 +45,12 @@ public class AdminController {
 
         }
 
-        @Override
-        public void createPet(PetDto petDto) throws Exception {
-
-        }
-
-        @Override
-        public void createClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
-
-        }
 
         @Override
         public void createOwnerUser(PersonDto personDto) throws Exception {
 
         }
-    }
+    };
 
 
 
@@ -215,7 +204,7 @@ public class AdminController {
 
         OrderDto orderDto = new OrderDto();
 
-        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto(veterinarian, reasonForConsultation, symptoms, diagnostic, procedures, medicines, orderDto.getOrderId(), vaccinationHistory, allergies, detailsProcedures);
+        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto(veterinarian, reasonForConsultation, symptoms, diagnostic, procedures, medicines, orderDto, vaccinationHistory, allergies, detailsProcedures);
         clinicHistoryDao.createClinicHistory(clinicHistoryDto);
         System.out.println("Historia clínica creada exitosamente");
 
@@ -229,6 +218,7 @@ public class AdminController {
         petInputsValidator.nameValidator(name);
         System.out.println("Ingresa la cedula del dueño");
         long idOwner  = petInputsValidator.ownerValidator(reader.nextLine());
+        PersonDto owner = new PersonDto(idOwner);
         System.out.println("Ingresa la edad de la mascota");
         int age = petInputsValidator.ageValidator(reader.nextLine());
         System.out.println("Ingresa la especie");
@@ -245,7 +235,7 @@ public class AdminController {
 
 
 
-        PetDto petDto = new PetDto(name,age, idNumber, species, breed, characteristics, weight, idOwner);
+        PetDto petDto = new PetDto(name,age, species, breed, characteristics, weight,owner );
     }
 
     public void sessionSeller() {
@@ -294,7 +284,7 @@ public class AdminController {
         BillDto billDate = new BillDto();
 
 
-        BillDto billDto = new Bill(invoiceId, petDto.getIdNumber(), personDto.getId(), productName, price, amount, billDate.getDate());
+        BillDto billDto = new BillDto( petDto, personDto, productName, price, amount, billDate.getDate());
 
     }
 }

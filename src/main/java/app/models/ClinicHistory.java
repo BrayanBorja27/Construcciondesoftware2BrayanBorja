@@ -1,5 +1,7 @@
 package app.models;
 
+import app.dto.OrderDto;
+
 import java.sql.Date;
 
 public class ClinicHistory {
@@ -20,7 +22,11 @@ public ClinicHistory() {
 	this.registerDate=new Date(System.currentTimeMillis());
 }
 
-public Date getRegisterDate() {
+
+	public ClinicHistory(String veterinarian, String reasonForConsultation, String symptoms, String diagnostico, String procedures, String medicines, OrderDto orderId, String vaccinationHistory, String allergies, String detailsProcedures) {
+	}
+
+	public Date getRegisterDate() {
 	return registerDate;
 }
 public void setRegisterDate(Date registerDate) {

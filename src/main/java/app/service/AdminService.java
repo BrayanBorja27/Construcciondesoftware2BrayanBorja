@@ -6,8 +6,7 @@ import app.dto.PetDto;
 
 public interface AdminService {
     public void createUser(PersonDto personDto) throws Exception;
-    public void createPet(PetDto petDto) throws Exception;
-    public void createClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception;
+
 
     public void createOwnerUser(PersonDto personDto) throws Exception;
 }

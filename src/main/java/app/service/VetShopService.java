@@ -5,8 +5,6 @@ import app.dto.ClinicHistoryDto;
 import app.dto.PersonDto;
 import app.dto.PetDto;
 import app.dto.SessionDto;
-import app.models.ClinicHistory;
-import app.dto.OrderDto;
 
 import java.sql.Connection;
 import java.util.Arrays;
@@ -72,10 +70,6 @@ public class VetShopService implements AdminService , LoginService {
         setSesionID(0);
     }
 
-    @Override
-    public void createPet(PetDto petDto) throws Exception {
-
-    }
 
     private ClinicHistoryDao clinicHistoryDao;
 
@@ -83,26 +77,29 @@ public class VetShopService implements AdminService , LoginService {
 
     // ...
 
-    @Override
+   /* @Override
     public void createClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
         ClinicHistoryDto clinicHistory = new ClinicHistoryDto(clinicHistoryDto.getVeterinarian(), clinicHistoryDto.getReasonForConsultation(), clinicHistoryDto.getSymptoms(), clinicHistoryDto.getDiagnostico(), clinicHistoryDto.getProcedures(), clinicHistoryDto.getMedicines(), clinicHistoryDto.getIdorder() , clinicHistoryDto.getVaccinationHistory(), clinicHistoryDto.getAllergies(), clinicHistoryDto.getDetailsProcedures());
         this.clinicHistoryDao.createClinicHistory(clinicHistoryDto);
     }
+
+    */
 
     @Override
     public void createOwnerUser(PersonDto personDto) throws Exception {
 
     }
 
-    public ClinicHistoryDto getClinicHistory(long petId) throws Exception {
+    //public ClinicHistoryDto SearchClinicHistory(long petId) throws Exception {
         // Consulta la historia clínica de la mascota en la base de datos utilizando el ID de la mascota
-        ClinicHistory clinicHistory = clinicHistoryDao.getClinicHistory(petId);
+        //ClinicHistoryDao clinicHistory = new ClinicHistoryDaoImpl();
+        //clinicHistory.searchClinicHistory(petId);
 
-        // Crea una nueva instancia de ClinicHistoryDto utilizando los datos de la historia clínica de la mascota
-        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto(clinicHistory.getVeterinarian(), clinicHistory.getReasonForConsultation(), clinicHistory.getSymptoms(), clinicHistory.getDiagnostico(), clinicHistory.getProcedures(), clinicHistory.getMedicines(), clinicHistory.getIdOrder(), clinicHistory.getVaccinationHistory(), clinicHistory.getAllergies(), clinicHistory.getDetailsProcedures());
+         //Crea una nueva instancia de ClinicHistoryDto utilizando los datos de la historia clínica de la mascota
+        //ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto(clinicHistory.getVeterinarian(), clinicHistory.getReasonForConsultation(), clinicHistory.getSymptoms(), clinicHistory.getDiagnostico(), clinicHistory.getProcedures(), clinicHistory.getMedicines(), clinicHistory.getIdOrder(), clinicHistory.getVaccinationHistory(), clinicHistory.getAllergies(), clinicHistory.getDetailsProcedures());
 
-        return clinicHistoryDto;
-    }
+        //return clinicHistoryDto;
+   // }
 }
 
 

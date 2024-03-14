@@ -12,7 +12,7 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public void createPerson(PersonDto personDto) throws Exception {
-        String query = "INSERT INTO PERSONA(CEDULA,NOMBRE,EDAD,ROL,USERNAME,PASSWORD) VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO PERSONA(cedula,nombre,edad, Rol,username,password) VALUES (?,?,?,?,?,?)";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         int i = 1;
         preparedStatement.setLong(i++, personDto.getId());
@@ -27,7 +27,7 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public boolean findUserExist(PersonDto personDto) throws Exception {
-        String query = "SELECT 1 FROM PERSONA WHERE CEDULA = ?";
+        String query = "SELECT 1 FROM PERSONA WHERE cedula = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setLong(1, personDto.getId());
         ResultSet resulSet = preparedStatement.executeQuery();
@@ -45,7 +45,7 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public boolean existUserByUserName(PersonDto personDto) throws Exception {
-        String query = "SELECT 1 FROM PERSONA WHERE USERNAME = ?";
+        String query = "SELECT 1 FROM PERSONA WHERE username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1, personDto.getUserName());
         ResultSet resulSet = preparedStatement.executeQuery();
@@ -57,7 +57,7 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public PersonDto findUserByUserName(PersonDto personDto) throws Exception {
-        String query = "SELECT CEDULA,NOMBRE,EDAD,ROL,USERNAME,PASSWORD FROM PERSONA WHERE USERNAME = ?";
+        String query = "SELECT cedula,nombre,edad, Rol,username,password FROM PERSONA WHERE username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1, personDto.getUserName());
         ResultSet resulSet = preparedStatement.executeQuery();

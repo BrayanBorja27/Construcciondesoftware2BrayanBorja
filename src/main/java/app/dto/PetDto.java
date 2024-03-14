@@ -8,12 +8,12 @@ private String species;
 private String breed;
 private String characteristics;
 private double weight;
-private String ownerId;
+private PersonDto ownerId;
 
-	public PetDto(String name, int age, long idNumber, String species, String breed, String characteristics, double weight, String ownerId) {
+	public PetDto(String name, int age, String species, String breed, String characteristics, double weight, PersonDto ownerId) {
 		this.name = name;
 		this.age = age;
-		this.idNumber = idNumber;
+		//this.idNumber = idNumber;
 		this.species = species;
 		this.breed = breed;
 		this.characteristics = characteristics;
@@ -67,11 +67,11 @@ public void setWeight(double weight) {
 	this.weight = weight;
 }
 
-	public String getOwnerId() {
+	public PersonDto getOwnerId() {
 		return ownerId;
 	}
 
-	public void setOwnerId(String ownerId) {
+	public void setOwnerId(PersonDto ownerId) {
 		this.ownerId = ownerId;
 	}
 }

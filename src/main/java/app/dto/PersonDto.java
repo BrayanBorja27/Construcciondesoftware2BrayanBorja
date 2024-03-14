@@ -21,6 +21,10 @@ private int age;
 		this.role = role;
 	}
 
+	public PersonDto(long idOwner){
+		this.id = idOwner;
+	}
+
 	public PersonDto(String userName, String password) {
 		this.userName = userName;
 		this.password = password;
@@ -33,6 +37,9 @@ private int age;
 		this.password = person.getPassword();
 	}
 	public PersonDto() {
+	}
+
+	public PersonDto(String userName, String password, String rol) {
 	}
 
 	public long getId() {
