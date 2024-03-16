@@ -1,18 +1,15 @@
 package app.service;
 
 import app.dao.*;
-import app.dto.ClinicHistoryDto;
-import app.dto.PersonDto;
-import app.dto.PetDto;
-import app.dto.SessionDto;
+import app.dto.*;
 
 import java.sql.Connection;
 import java.util.Arrays;
 import java.util.List;
 
-public class VetShopService implements AdminService , LoginService {
+public class VetShopService implements AdminService , LoginService , VetService {
 
-    private static final String[] rolls = {"Vendedor", "Administrador", "Veterinario"};
+    private static final String[] rolls = {"Administrador", "Vendedor", "Veterinario"};
     private static long sessionId = 0L;
     private Connection connection;
 
@@ -26,20 +23,22 @@ public class VetShopService implements AdminService , LoginService {
 
     @Override
     public void createUser(PersonDto personDto) throws Exception {
-        List<String> rols = Arrays.asList(rolls);
-        if(!rols.contains(personDto.getRole())){
-            throw new Exception("El rol no es valido");
+        List<String> validRols = Arrays.asList(rolls);
+        if(!validRols.contains(personDto.getRole())){
+            throw new Exception("El rol no es válido");
         }
         PersonDao personDao = new PersonDaoImpl();
         if (personDao.findUserExist(personDto)) {
-            throw new Exception("ya existe un usuario con esa cedula");
+            throw new Exception("Ya existe un usuario con esa cedula");
         }
         if (personDao.existUserByUserName(personDto)) {
-            throw new Exception("ya existe el usuario");
+            throw new Exception("Ya existe el usuario");
         }
         personDao.createPerson(personDto);
-        System.out.println("se ha creado el usuario");
+        System.out.println("Se ha creado el usuario");
+    }
 
+    public VetShopService() {
     }
 
     @Override
@@ -77,29 +76,31 @@ public class VetShopService implements AdminService , LoginService {
 
     // ...
 
-   /* @Override
+    @Override
     public void createClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
         ClinicHistoryDto clinicHistory = new ClinicHistoryDto(clinicHistoryDto.getVeterinarian(), clinicHistoryDto.getReasonForConsultation(), clinicHistoryDto.getSymptoms(), clinicHistoryDto.getDiagnostico(), clinicHistoryDto.getProcedures(), clinicHistoryDto.getMedicines(), clinicHistoryDto.getIdorder() , clinicHistoryDto.getVaccinationHistory(), clinicHistoryDto.getAllergies(), clinicHistoryDto.getDetailsProcedures());
         this.clinicHistoryDao.createClinicHistory(clinicHistoryDto);
     }
 
-    */
+    @Override
+    public void SearchClinicHistory(ClinicHistoryDto orderDto) throws Exception {
+        // Consulta la historia clínica de la mascota en la base de datos utilizando el ID de la mascota
+        ClinicHistoryDao clinicHistory = new ClinicHistoryDaoImpl();
+        clinicHistory.searchClinicHistory(orderDto.getIdorder());
+
+        //Crea una nueva instancia de ClinicHistoryDto utilizando los datos de la historia clínica de la mascota
+        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto(clinicHistory.getVeterinarian(), clinicHistory.getReasonForConsultation(), clinicHistory.getSymptoms(), clinicHistory.getDiagnostico(), clinicHistory.getProcedures(), clinicHistory.getMedicines(), clinicHistory.getIdOrder(), clinicHistory.getVaccinationHistory(), clinicHistory.getAllergies(), clinicHistory.getDetailsProcedures());
+
+        return clinicHistoryDto;
+    }
+
 
     @Override
     public void createOwnerUser(PersonDto personDto) throws Exception {
 
     }
 
-    //public ClinicHistoryDto SearchClinicHistory(long petId) throws Exception {
-        // Consulta la historia clínica de la mascota en la base de datos utilizando el ID de la mascota
-        //ClinicHistoryDao clinicHistory = new ClinicHistoryDaoImpl();
-        //clinicHistory.searchClinicHistory(petId);
 
-         //Crea una nueva instancia de ClinicHistoryDto utilizando los datos de la historia clínica de la mascota
-        //ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto(clinicHistory.getVeterinarian(), clinicHistory.getReasonForConsultation(), clinicHistory.getSymptoms(), clinicHistory.getDiagnostico(), clinicHistory.getProcedures(), clinicHistory.getMedicines(), clinicHistory.getIdOrder(), clinicHistory.getVaccinationHistory(), clinicHistory.getAllergies(), clinicHistory.getDetailsProcedures());
-
-        //return clinicHistoryDto;
-   // }
 }
 
 

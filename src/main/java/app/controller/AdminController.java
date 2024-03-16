@@ -19,6 +19,8 @@ public class AdminController {
 
     PetInputsValidator petInputsValidator = new PetInputsValidator();
 
+     VetShopService vetShopService = new VetShopService();
+
     ClinicHistoryDao clinicHistoryDao = new ClinicHistoryDao() {
         @Override
         public void createClinicHistory(ClinicHistoryDto clinicHistoryDto) throws Exception {
@@ -32,7 +34,7 @@ public class AdminController {
         }
 
         @Override
-        public void searchClinicHistory(Long petId) throws Exception {
+        public void searchClinicHistory(OrderDto orderDto) throws Exception {
 
         }
 
@@ -111,9 +113,7 @@ public class AdminController {
         personInputsValidator.passwordValidator(password);
         PersonDto personDto = new PersonDto(id , fullName , age ,rol , userName , password);
         System.out.println("Se cumplieron todas las validaciones");
-        adminService.createUser(personDto);
-
-
+        vetShopService.createUser(personDto);
     }
 
     public void sessionVet() {
@@ -197,14 +197,15 @@ public class AdminController {
         System.out.println("Ingresa las alergias");
         String allergies = reader.nextLine();
         clinicHistoryInputsValidator.allergiesValidator(allergies);
-        System.out.println("Ingresa los detaller dle procedimiento");
+        System.out.println("Ingresa los detaller del procedimiento");
         String detailsProcedures = reader.nextLine();
         clinicHistoryInputsValidator.medicinesValidator(detailsProcedures);
 
 
         OrderDto orderDto = new OrderDto();
+        PetDto petDto = new PetDto();
 
-        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto(veterinarian, reasonForConsultation, symptoms, diagnostic, procedures, medicines, orderDto, vaccinationHistory, allergies, detailsProcedures);
+        ClinicHistoryDto clinicHistoryDto = new ClinicHistoryDto(veterinarian, reasonForConsultation, symptoms, diagnostic, procedures, medicines, orderDto, petDto ,vaccinationHistory, allergies, detailsProcedures);
         clinicHistoryDao.createClinicHistory(clinicHistoryDto);
         System.out.println("Historia clínica creada exitosamente");
 

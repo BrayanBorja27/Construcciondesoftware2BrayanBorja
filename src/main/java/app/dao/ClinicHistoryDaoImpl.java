@@ -57,6 +57,10 @@ public class ClinicHistoryDaoImpl implements ClinicHistoryDao {
         }
     }
 
+    @Override
+    public List<ClinicHistoryDto> getClinicHistories() throws Exception {
+        return null;
+    }
 
 
     public ClinicHistory searchClinicHistory(long petId) throws Exception {
@@ -100,11 +104,11 @@ public class ClinicHistoryDaoImpl implements ClinicHistoryDao {
     }
 
     @Override
-    public void searchClinicHistory(Long petId) throws Exception {
+    public void searchClinicHistory(OrderDto orderDto) throws Exception {
         // Consulta la historia clínica de la mascota en la base de datos utilizando el ID de la mascota
         String sql = "SELECT * FROM historia WHERE mascota = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setLong(1, petId);
+        statement.setOrderDto(1, orderDto);
         ResultSet resultSet = statement.executeQuery();
 
         // Crea una nueva instancia de ClinicHistory utilizando los datos de la historia clínica de la mascota

@@ -45,9 +45,9 @@ public class LoginController {
         loginService.logout();
     }
     private void loginRouter(PersonDto personDto) {
-        if (personDto.getRole().equals("Administrador")) {
+        if ("Administrador".equals(personDto.getRole())) {
             adminController.sessionAdmin();
-        } else if (personDto.getRole().equals("Veterinario")){
+        } else if ("Veterinario".equals(personDto.getRole())){
             adminController.sessionVet();
         }
     }

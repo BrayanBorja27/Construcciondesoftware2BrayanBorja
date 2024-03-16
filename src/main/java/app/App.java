@@ -6,9 +6,15 @@ import app.controller.AdminController;
 import java.sql.Connection;
 import java.util.Scanner;
 import app.controller.LoginController;
+import app.dao.PersonDao;
+import app.dto.PersonDto;
+
 public class App {
+
+
     private static Scanner reader = new Scanner(System.in);
     private static LoginController loginController = new LoginController();
+    private static AdminController adminController = new AdminController();
     public static void main(String[] args) {
         AdminController adminController = new AdminController();
 
@@ -30,18 +36,24 @@ public class App {
         System.out.println(menu);
         System.out.println("==============================");
         String option = reader.nextLine();
+
         switch (option) {
-            case "1": {
-                loginController.login();
-                return true;
+            case "1":{
+                adminController.createUser();
+                break;
             }
             case "2": {
-                return false;
+                loginController.login();
+                break;
+            }
+            case "3": {
+                break;
             }
             default: {
                 System.out.print("ingrese una opcion valida");
-                return true;
+                break;
             }
         }
+        return false;
     }
 }

@@ -11,12 +11,13 @@ private String diagnostico;
 private String procedures;
 private String medicines;
 private OrderDto idOrder;
+private PetDto idPet;
 private String vaccinationHistory;
 private String allergies;
 private String detailsProcedures;
 private String estado;
 
-	public ClinicHistoryDto( String veterinarian, String reasonForConsultation, String symptoms,String diagnostico, String procedures, String medicines, OrderDto idOrder, String vaccinationHistory, String allergies, String detailsProcedures) {
+	public ClinicHistoryDto( String veterinarian, String reasonForConsultation, String symptoms,String diagnostico, String procedures, String medicines, OrderDto idOrder,PetDto idPet, String vaccinationHistory, String allergies, String detailsProcedures) {
 
 		this.veterinarian = veterinarian;
 		this.reasonForConsultation = reasonForConsultation;
@@ -25,6 +26,7 @@ private String estado;
 		this.procedures = procedures;
 		this.medicines = medicines;
 		this.idOrder = idOrder;
+		this.idPet = idPet;
 		this.vaccinationHistory = vaccinationHistory;
 		this.allergies = allergies;
 		this.detailsProcedures = detailsProcedures;

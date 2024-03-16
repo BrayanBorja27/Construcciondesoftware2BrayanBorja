@@ -6,23 +6,30 @@ import java.sql.ResultSet;
 import app.config.MYSQLConnection;
 import app.dto.PersonDto;
 import app.models.Person;
+import app.controller.AdminController;
 
 public class PersonDaoImpl implements PersonDao {
     public Connection connection = MYSQLConnection.getConnection();
 
     @Override
     public void createPerson(PersonDto personDto) throws Exception {
-        String query = "INSERT INTO PERSONA(cedula,nombre,edad, Rol,username,password) VALUES (?,?,?,?,?,?)";
-        PreparedStatement preparedStatement = connection.prepareStatement(query);
-        int i = 1;
-        preparedStatement.setLong(i++, personDto.getId());
-        preparedStatement.setString(i++, personDto.getFullName());
-        preparedStatement.setInt(i++, personDto.getAge());
-        preparedStatement.setString(i++, personDto.getRole());
-        preparedStatement.setString(i++, personDto.getUserName());
-        preparedStatement.setString(i++, personDto.getPassword());
-        preparedStatement.execute();
-        preparedStatement.close();
+        String query = "INSERT INTO persona(cedula,nombre,edad,username,password, Rol) VALUES (?,?,?,?,?,?)";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setLong(1, personDto.getId());
+            preparedStatement.setString(2 , personDto.getFullName());
+            preparedStatement.setInt(3, personDto.getAge());
+            preparedStatement.setString(4, personDto.getUserName());
+            preparedStatement.setString(5, personDto.getPassword());
+            preparedStatement.setString(6, personDto.getRole());
+            preparedStatement.execute();
+            preparedStatement.close();
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected == 1) {
+                System.out.println("Usuario creado correctamente en la base de datos.");
+            } else {
+                System.out.println("Error al crear el usuario en la base de datos.");
+            }
+        }
     }
 
     @Override
